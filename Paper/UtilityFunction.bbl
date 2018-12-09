@@ -1,0 +1,52 @@
+\begin{thebibliography}{10}
+
+\bibitem{utilUse1}
+P.~Peng and R.~C.-W. Wong, ``k-hit query: Top-k query with probabilistic
+  utility function,'' in {\em Proceedings of the 2015 ACM SIGMOD International
+  Conference on Management of Data}, SIGMOD '15, (New York, NY, USA),
+  pp.~577--592, ACM, 2015.
+
+\bibitem{utilUse2}
+D.~Nanongkai, A.~D. Sarma, A.~Lall, R.~J. Lipton, and J.~Xu,
+  ``Regret-minimizing representative databases,'' {\em Proc. VLDB Endow.},
+  vol.~3, pp.~1114--1124, Sept. 2010.
+
+\bibitem{Recommender:Rashid}
+A.~M. Rashid, G.~Karypis, and J.~Riedl, ``Learning preferences of new users in
+  recommender systems: An information theoretic approach,'' {\em SIGKDD Explor.
+  Newsl.}, vol.~10, pp.~90--100, Dec. 2008.
+
+\bibitem{Recommender:Burke}
+R.~Burke, ``Hybrid recommender systems: Survey and experiments,'' {\em User
+  modeling and user-adapted interaction}, 2002.
+
+\bibitem{GP:Chu}
+W.~Chu and Z.~Ghahramani, ``Preference learning with gaussian processes,'' in
+  {\em Proceedings of the 22Nd International Conference on Machine Learning},
+  ICML '05, (New York, NY, USA), pp.~137--144, ACM, 2005.
+
+\bibitem{GP:Houlsby}
+N.~Houlsby, J.~M. Hern\'{a}ndez-Lobato, F.~Husz\'{a}r, and Z.~Ghahramani,
+  ``Collaborative gaussian processes for preference learning,'' in {\em
+  Proceedings of the 25th International Conference on Neural Information
+  Processing Systems}, NIPS'12, (USA), pp.~2096--2104, Curran Associates Inc.,
+  2012.
+
+\bibitem{PE:Blum}
+A.~Blum, J.~Jackson, T.~Sandholm, and M.~Zinkevich, ``Preference elicitation
+  and query learning,'' {\em J. Mach. Learn. Res.}, vol.~5, pp.~649--667, Dec.
+  2004.
+
+\bibitem{linearAlgebra}
+D.~C. Lay, {\em Linear Algebra and its Applications}.
+\newblock Pearson, fifth~ed.
+
+\bibitem{ML}
+C.~Bishop, {\em Pattern Recognition and Machine Learning}.
+\newblock Springer-Verlag New York.
+
+\bibitem{silverman}
+B.~W. Silverman, {\em Density Estimation for Statistics and Data Analysis}.
+\newblock Chapman \& Hall, London, 1986.
+
+\end{thebibliography}

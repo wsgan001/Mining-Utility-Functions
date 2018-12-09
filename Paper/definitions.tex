@@ -1,0 +1,75 @@
+\section{Definitions and Assumptions}
+Before being able to address the problem introduced above, we first need to give a formal definition of the problem. Here, we formalize the notation used in the rest of this paper and give a more rigorous definition of the concepts and the problem addressed in this paper.
+
+\subsection{Utility Functions}
+The ultimate aim of this project is to gain more insight in to the decision making process of the users of a set of items available in a database. To understand the users better, we need to be able discern how they evaluate different choices (i.e. the items in the database) they have. For this, we introduce the concept of \textit{utility functions}. Utility functions are used to quantify the ``satisfaction'' or ``happiness'' a user derives from a specific point from a database.
+
+\medskip
+\indent \textit{Definition 1.}  \textbf{Utility function.} On a database $D$, a \textit{utility function} $f$ is a mapping $f: D \rightarrow \mathbb{R}$. For a point $p$, $p \in D$, $f(p)$ denotes the \textit{utility} of a user with the utility function $f$ derived from the point $p$.
+\medskip
+
+\input{Table1}
+A utility function provides us with a means to measure a user's satisfaction. Each user has a specific utility function. In other words, we can define a user by his or her utility function. Thus, the notions of ``utility function" and ``user" are used interchangeably in this paper. As an example, on the database shown in Table 1, a user can have the utility function $f(price, distance, size)$ = 0.8 $\times$ price + 0.05 $\times$ distance + 0.1 $\times$ size. This means that this user attaches more value to the price of the hotel in comparison with the distance or the size. Based on this function we can calculate the utility of the user from different points. For instance, the utility of the user from Hilton Hotel is $f(0.15, 0.77, 0.61) = 0.8 \times 0.15 + 0.05 \times 0.77 + 0.15 \times 0.61$ = $0.25$. A user is more satisfied if the value of his or her utility function is higher. 
+
+Note that the utility function of a user is defined on the domain of the database. That is, if the database the utility function is defined on is a database consisting of $n$ points, then input to the the utility function of a user can only be one of the $n$ points in the database. As a result, we can represent the utility function of a user with an $n$-dimensional vector whose $i$-th element is the utility the user derives from the $i$-th point in the database. In other words, if $p_i$ is the $i$-th point in the database $D$, and $f_i$ is the utility the user derives from $p_i$ (in the previous notation $f(p_i) = f_i$), then we can write
+\[f = \left( \begin{array}{c}
+f_1 \\
+f_2 \\
+\vdots\\
+f_n \end{array} \right)\].
+
+A class of utility functions that will be used in the rest of this paper is the class of \textit{linear utility functions}. A linear utility function is a function that can be written as the linear combination of the attributes of its input.  
+
+\medskip
+\indent \textit{Definition 2.}  \textbf{Linear Utility functions.} On a $d$-dimensional database $D$, a utility function $f$ is a \textit{linear utility function} if there exists a single $d$-dimensional vector $w$ for all the points $p, p \in D$, for which $f(p) = \sum_{i = 1}^{d} w_i \times p_i$, where $w_i$ is the $i$-th element of $w$ and $p_i$ is the value of the $i$-th dimension of the point $p$. Alternatively, we can write $f(p) = p\cdot w$. We call $w_i$ the weight the user attaches to the $i_th$ dimension. We can denote the utility function $f$ by its weight vector $w$.
+\medskip
+
+In the example above, the utility function of Alex was a linear utility function as it was defined as the linear combination of the three dimensions of the database. Obviously, not all the utility functions are linear, and such1 weight vector might not exist.
+
+In general, we do not know the utility function of the users. we try to learn about it based on users' behavior or the information they provide. One of the ways we can obtain such an information is through users' feedback. For example, many websites allow their customers to rate and evaluate the items they buy. Such user ratings are a way customers express how satisfied they are with an item. More specifically, the ratings are a quantification of the satisfaction of the users, or in the terms defined above, the utility a user derives from an item. Therefore, we can define a rating as follows.
+
+\medskip
+\indent \textit{Definition 3.}  \textbf{Ratings.} On a database $D$, for a user with utility function $f$ a rating is an observed value of the utility function of the user. That is if the user provides a rating $r$ on an item $p$ from the database, then $f(p) = r$.
+\medskip
+
+Table \ref{table:3} show the ratings a few users have provided on some of the hotels. Usually, users do not provide a rating on all the items in the database. That is, using the ratings, we can only know the some of values of the utility function of the user. For instance, based on table \ref{table:3} we can can say
+\[f_{Alex} = \left( \begin{array}{c}
+f_1 \\
+0.75 \\
+f_3\\
+0.25 \end{array} \right)\]
+
+where $f_{Alex}$ is her utility function and $f_1$ and $f_3$ are two unknown constant, as we do not have any information on the utility she derives from the other points in the database. 
+
+\subsection{Assumptions}
+As mentioned before, in this paper we aim at developing a method that helps understanding how much value different users attach to different dimensions or attributes of the points in the database. For example, in the hotel database mentioned above, we want to be able to answer the questions similar to ``what is the probability of a user attaching more value to the location of a hotel compared to its price?'' 
+
+To answer question of that sort, we need to have knowledge about the probability distribution of the utility functions. Recall that utility functions can be expressed as $n$-dimensional vectors that take real values in each of their dimensions, where $n$ is the number of points in the database. Therefore, we can view a utility function as an $n$-dimensional continuous random variable. For this random variable, we want to find its probability distribution, or equivalently its cumulative distribution function (cdf). 
+
+However, knowing the probability distribution of the $n$-dimensional random variable of the utility functions gives us little information about how users evaluate different dimensions of different points. For instance, in the hotel example above, by knowing the distribution of the utility functions, we my be able to infer that ``the probability of a user liking Holiday Inn is higher than Hilton''. But this piece of information does not immediately translate into any knowledge about the attributes of the points in the database. Our goal was to find out whether users pay more attention to the price or to the location of a hotel, and not to merely compare two different hotels.
+
+To address this issue, we use the class of linear utility functions defined above. Linear utility functions are useful in that they provide us with a great insight into how different attributes of a datapoint affect the utility of the users. If a user has a linear utility function, we can know exactly how much value he or she attaches to different dimensions of the points. As a result, in the rest of this paper, we use linear utility functions to represent the utility function of the users.
+
+Not withstanding its benefits, a linear model might not necessarily be suitable to represent all possible users. For instance, in the hotel example, a utility function $f(p) = 1$, for all points in the database cannot be represented by a linear utility function. This is because such a utility function ignores all the attributes of the points in the database and calculates the utility irrespective of the points. However, such a utility function does not usually exist in practice. we do not expect to see anyone who gains the same utility from all the possible hotels we have. In other words, we expect to see some form of correlation between the points' attributes and the utility of the users. Although such a correlation might not necessarily be linear, we assume that a linear model is capable of capturing it to a suitable extent. 
+
+There are two reasons why we use a linear model to represent the utility functions. First, the information we want to capture from the data can be represented by linear utility functions. We, for instance, want to know whether a user cares more about the price of a hotel or its location. Such a statement, by itself, assumes the existence of linear utility functions, as it is concerns the weight a user attaches to each attribute of the points. As a result, using a more complicated model to learn about the utility functions is unnecessary. Moreover, usually the data we have about users utility is not enough for us to be able to use non-linear models. For instance, usually, a specific users provides ratings for only a few hotels among the many that are existing in the database. For this matter, we cannot expect to learn complicated models effectively based on the little information available. 
+
+\subsection{Problem Definition}
+After having our assumptions and definitions set, we now provide a formal definition of the problem addressed in this paper.
+
+The input to our problem is a set of ratings provided by different users on the items in a database. Based on the ratings, we want to find the probability distribution of the utility functions, characterized by its cumulative distribution function .
+
+\medskip
+\indent \textbf{Problem Definition.}  For a $d$-dimensional database $D$ of size $n$, given a set of ratings $R$ provided by $N$ users on some of the $n$ items in the database, find the cumulative distribution function of the linear utility functions, i.e. find the value of $Pr(d_1 < D_1, d_2 < D_2, ..., d_d < D_d )$ for any real $D_1, D_2, ..., D_d$, where $d_i$ is the $i$-th dimension of a linear utility function.
+\medskip
+
+Based on the problem defined above, we will be able to find out what the probability of a user attaching a set of weights to a specific dimension of the database is. For instance, in the hotel database above, we can answer queries similar to $Pr(Price > 0.5 and Location < 0.2)$ which shows what the probability of a user attaching more than 50 percent value to the price of a hotel and less than 20 percent to its location.
+
+Note that in the problem definition we are considering a utility function as a $d$-dimensional random vector and trying to understand its probability distribution based on some observed utility values. There are two general steps we need to follow for this. First, for each user, we need to find out the weights of his or her linear utility function that fits its ratings the best. Then for each user we will have a $d$-dimensional vector that shows the weight the user attaches to each of the dimensions. We will have $N$ such vectors, where $N$ is the number of users that have provided ratings. Each of these $N$ vectors are in fact an observation of the utility function random vector. The second step is for us to find out the probability distribution of the random random vector based on these observed values.
+
+To see it more clearly, consider the information shown in Tables 1 to 3. Table \ref{table:1} shows a database and Table \ref{table:3} shows a set of ratings provided by some users. Our first step is to extract the information shown in Table \ref{table:2} from the database and the ratings. Table \ref{table:2} shows the linear utility function of each user that has provided a rating. As the users' behavior might not exactly be linear, the utility functions discovered from the ratings might not exactly have the same values as the original rating and some error might be introduced in this step which will be discussed later. After fining out the information shown in Table \ref{table:2}, we will build a probability distribution based on the values.  These steps will be discussed in more detail in the following chapters.
+
+ 
+
+
+

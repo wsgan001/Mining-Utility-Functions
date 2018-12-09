@@ -1,0 +1,32 @@
+	\section{Introduction}
+	By the proliferation of the amount of data available on the internet, opinions expressed by users, either explicitly or implicitly, can be found on various parts of the web. As an example, many websites allow users to provide feedback, reviews and ratings regarding the items they have purchased or used. Thus, a possible use of the data is to deduce how different users perceive various items on which the opinion of some of the users is known. 
+	
+	As an example, consider a hotel booking website. Users of the website might be able provide reviews and ratings on the hotels they have booked. Furthermore, a database of hotels will exist that contains different information about different hotels. Based on these together, it is possible to infer how different features of the hotels affect the way consumers evaluate them.
+	
+	To be more specific, assume that in the database of the hotels, the information available about each hotel contains its price, distance from downtown and size of the rooms. A problem of interest, then, is that when users are booking a hotel, how much value do they attach to each attribute of the hotels. Note that there is a trade-off between different qualities of the hotel. For example, a hotel with a better price is usually in a worse location. Furthermore, the users have different preferences and criteria in mind in their decision making. A rich businessman, for instance, might care less about the price of a hotel compared with a student.
+	
+	As mentioned, it might be of interest, for the hotel website owner for instance, to know how different users perceive different hotels. This information can be used for different purposes. One of the applications can be suggesting hotels to the users in recommendation systems. Additionally, the owner can use this information for policy making. For example if the majority of the users care much more about the price of the rooms, it might make sense for the website to contain a larger number of low-priced hotels and fewer expensive ones.
+	
+	To be able to answer such questions, we need to be know what the probability of a specific user having a specific set of preferences is. In more mathematical terms, we need to have access to the probability distribution of the user's preferences. To denote the user's preferences, we use utility functions, which, informally, are functions that quantify the satisfaction a user gets from a specific point. Using this concept, the problem translates into finding the probability distribution of the utility functions of users. 
+	
+	Knowing the probability distribution of utility functions can help businesses make more informed decisions, as mentioned above. Furthermore, utility functions, recently, have been used in various research fields (such as \cite{utilUse1, utilUse2}). Knowing the distribution of utility functions can help enhancing the results in those fields as it can provide more realistic information.
+	
+	However, work in this area have been mainly limited to understanding a specific user's preferences. Different methods have been proposed to predict user's choices given information on the user or his or her previous choices and information about the other user's preferences. However, the literature has come short in analyzing the existent information on current users instead of predicting the future.
+	
+	\subsection{Contributions}
+	Motivated by this, in this project, we aim at developing a method in order to infer the probability distribution of the \textit{utility functions} of the users of a database, given a set of ratings on a number of the items in the database provided by a set of the users. In the hotel booking example, the mentioned ratings can be the rating a user provides on a hotel. We build the probability distribution to be able to answer the question such as what is the probability of a user attaching more value to price compared to location of the hotel.
+	
+	In solving this problem, our major contributions can be summarized as follow.
+	\begin{itemize}
+		\item{We propose the use of linear utility functions to model user preferences.}
+		\item{We estimate the probability distribution of utility functions using Gaussian mixture models and kernel density estimation.}
+		\item{We conduct empirical studies to evaluate our proposed methods.}
+	\end{itemize}
+	
+	\textbf{Organization.} We first give a summary on the relevant works in the literature in section 2. Then, we provide the definition of the problem addressed in this paper as well as the assumptions behind our model in section 3.In section 4, we explain how we find a specific user's utility function. After that, we provide our methods to build a probability distribution of utility functions in section 5. We present our experiments in section 6 and conclude the paper in section 7.
+	
+	
+	
+	
+	
+	

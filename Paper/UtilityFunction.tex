@@ -1,0 +1,40 @@
+\documentclass{template}
+
+\usepackage{etoolbox}
+\usepackage{epstopdf}
+
+
+\begin{document}
+\newcommand\MyHead[2]{%
+	\multicolumn{1}{| c |}{\parbox{#1}{\centering #2}}
+}
+
+\makeatletter
+\patchcmd{\maketitle}{\@copyrightspace}{}{}{}
+\setlength{\@fptop}{5pt}
+\makeatother
+
+	\title{Mining Utility Functions Based on User Ratings}
+	\author{COMP5331 Project Report\\Sepanta Zeighami\\20213665}
+    \maketitle
+
+\begin{sloppy}
+	\begin{abstract}
+		We propose a method to use ratings provided by users on database items to understand users' overall preferences. The amount of user rating data available, on for instance e-commerce platforms, enables us to discern each user's preferences, such as whether the user prefers better quality over lower price or not. Thus, we can examine how much value each user attaches to different attributes of the items. By inferring such information from each user's ratings, we aim at understanding how the users in general perceive and evaluate different features of the items in the database. To this end, we propose different methods to build the probability distribution of the users' preferences based on the ratings they provide on different items in a database. We suggest to model the preferences of the users using linear utility functions. We further use Gaussian mixture models and kernel density estimation techniques to build the probability distribution of the preferences. This allows us to answer questions such as what is the probability of a user paying more attention to one attribute of an item compared to another. Having access to such an information is useful for businesses as well as research fields that deal with utility functions and user preferences.
+	\end{abstract}
+	
+\input{introduction}
+\input{relatedWorks}
+\input{definitions}
+\input{LearningUtilityFunction}
+\input{distributionUtilityFunctions}
+\input{experiments}
+\input{conclusion}
+
+	
+
+	\bibliographystyle{ieeetr}	
+	\bibliography{UtilityFunction}
+	
+\end{sloppy}
+\end{document}

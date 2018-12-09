@@ -1,0 +1,25 @@
+\section{Finding a user's Utility Function}
+In this section we will provide two methods to find the utility function of a user based on the ratings he or she has provided. The problem we are trying to solve here involves one specific user and the ratings that the user has provided. Based on this ratings, we want to find the utility function of the user. As discussed before, we use a linear utility function to represent the utility function of the user. 
+
+More formally, we are given a number of ratings on a set of points that is subset of our original $d$-dimensional database $D$. We can represent this subset of points with a matrix, $X$. Let $x_{i, j}$ be the element at the $i$-th row and the $j$-th column of the matrix. Then, we define the matrix $X$ so that $x_{i, j}$ is equal to the value of the  $j$-th dimension of the $i$-th point that is rated by the user. Assume the user rates $r$ points. Then, $X$ will be an $r \times d$ dimensional matrix. Also let $f_r$ be a vector representing the ratings the user has provided. $f_r$ has $r$ elements and its $i$-th element is equal to the $i$-th rating the user has provided and corresponds to the point in the $i$-th row of $X$. 
+
+As mentioned, we want to find a weight vector, $w$, for which for every point $p$ that is rated by the user, $w \cdot p$ is equal to the rating the user has provided. This means that we need to solve $r$ linear equations. These equations can be written as below.
+\begin{equation*}
+Xw = f_r
+\end{equation*}
+
+To find the vector $w$, we need to solve this system of linear equations. However, as discussed before, the behavior of the users might not be exactly linear in the attributes of the points in the database. Therefore, there might be inconsistencies among the equations and an exact solution, $w$, might not exist. To be able to find approximate solutions for $w$, we briefly discuss a method that can be used to approximate it.
+
+
+\textbf{Least Squares Approximation.}
+Least squares approximation is a simple method used in linear algebra that tries to find the best possible solution for an inconsistent set of linear equations. Imagine that the system of equation $Xw = f_r$ is inconsistent. Then, our best possible solution will be to find a vector $w'$ such that $Xw'$ is as similar to $f_r$ as possible. As a result, we want to find a $x'$ such that $E = \left\vert Xw' - f_r \right\vert^2$ is as small as possible, where $E$ is called the \textit{least squares error}. To do this, we can solve the equation $X^TXw = X^Tf_r$ instead, where $X^T$ is the transpose matrix of $X$. This equation will be consistent and will ensure the least possible squares error (see \cite{linearAlgebra} for details and proofs). 
+
+The least squares approximation provides a straightforward method for approximating the weight vector $w$ and can be implemented easily. We can use Gaussian Elimination, which is a widely used algorithm to solve such a system of linear equations. Remember that the equation we are trying to solve is $X^TXw = X^Tf_r$ and the matrix $X^TX$ is an $r \times r$ matrix. Using Gaussian Elimination, we will be able to find the solution in $O(r^3)$ time. Note that $r$ is usually relatively small, as we usually do not have ratings on many items provided by single users.
+
+\textbf{Linear Regression with Gaussian Noise.}
+Another approach towards solving the problem is using \textit{linear regression with Gaussian noise}. Although this method ultimately provides the same solution, we mention it here briefly as it provides more insight into the problem addressed. Remember that we want to solve the system equations $Xw = f_r$, but some of the equations are inconsistent. Instead of accepting that the equation are inconsistent and trying to find a solution with the least possible error, we assume that the linear model must be correct but the inconsistencies are a result of noise in the observation. The main difference in this and the previous approach is that here we assume that the users do act based on a linear model, but the ratings we get are inconsistent because of unknown noise or error in the data. This way, we represent the factors affecting the user's behavior that are out of the linear model based on a noise. Then, we assume that the noise follows a zero-mean Guassian distribution. Therefore, to find the weight vector $w$, we need to find a weight vector that makes the observations the most probable. For this, we can find a weight vector that maximizes the log-likelihood of the observations. This will result in a value for $w$ that is exactly the same as the previous approach (See \cite{ML} for details and proof).
+
+ 
+
+
+
